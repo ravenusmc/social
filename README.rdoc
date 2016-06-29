@@ -1,3 +1,7 @@
 == README
 
-This is a social media app similar to Tumblr. 
+This is a social media app similar to Tumblr.
+
+== GEMS 
+
+  Bootstrap 
