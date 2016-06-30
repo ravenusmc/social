@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
       leaders << leader
     end 
   end 
+
+  has_secure_password
+
+  validates :email, presence: true, uniqueness: true 
+
+  def timeline_user_ids
+    leader_ids + [id]
+  end 
 end
