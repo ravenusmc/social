@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.new 
   end
 
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.posts.order("created_at DESC")
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -13,6 +18,15 @@ class UsersController < ApplicationController
       render 'new'
     end 
   end
+
+  def follow
+    @user = User.find(params[:id])
+    if current_user.follow!(@user)
+      redirect_to @user, notice: "Follow Successful"
+    else
+      redirect_to @user, alert: "Error Following!"
+    end
+  end 
 
   private 
 

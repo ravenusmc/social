@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :sessions 
 
   get 'signup' => 'users#new'
+  get 'follow/:id', to: 'users#follow', as: 'follow_user'
 
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
